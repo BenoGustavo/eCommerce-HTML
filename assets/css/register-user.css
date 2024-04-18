@@ -87,11 +87,12 @@
 }
 
 .cadastro .cadastro-form .error-message {
-    background-color: rgb(204, 143, 143);
+    background-color: rgba(204, 143, 143, 0.767);
     color: rgb(179, 34, 34);
     max-width: 256px;
     font-weight: bold;
     text-align: center;
     border: 1px solid rgb(179, 34, 34);
     border-radius: .5rem;
+    padding: 1.2rem;
 }

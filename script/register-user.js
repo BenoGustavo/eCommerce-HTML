@@ -1,4 +1,4 @@
-const form = document.querySelector('.cadastro-form');
+    const form = document.querySelector('.cadastro-form');
 
 function get_form_data() {
     const inputs = document.querySelectorAll('input');
@@ -16,7 +16,7 @@ function get_form_data() {
 function get_local_data() {
     try {
         const data = localStorage.getItem('form-users') || '[]';
-    
+
         return JSON.parse(data);
     }
     catch (error) {
@@ -47,7 +47,7 @@ function add_local_data(data) {
         return display_error(error.message);
     }
 
-    window.location = "./pages/users_list.html"
+    window.location = "/html/products.html"
 }
 
 function display_error(error) {
@@ -59,7 +59,7 @@ function display_error(error) {
 
     setTimeout(() => {
         error_message.style.display = "none";
-    }, 3000);
+    }, 10000);
 }
 
 
