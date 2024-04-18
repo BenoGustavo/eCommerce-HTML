@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Usúario</title>
+    <link rel="stylesheet" href="/assets/css/remedy.css">
+    <link rel="stylesheet" href="/assets/css/register-user.css">
+</head>
+<body>
+    <main>
+        <section class="cadastro">
+            <h1>Página de cadastro</h1>
+            <form class="cadastro-form" action="/index.html">
+                <label for="nome">
+                    <input type="text" name="nome" required autocomplete="off">
+                    <span>Nome</span>
+                </label>
+                <label for="senha">
+                    <input type="password" name="senha" required>
+                    <span>Senha</span>
+                </label>
+                <label for="email">
+                    <input type="email" name="email" required>
+                    <span>Email</span>
+                </label>
+                <label for="dataNascimento">
+                    <input type="date" name="dataNascimento" required>
+                </label>
+                <div class="cadastro-form__opcoes">
+                    <button class="botao_limpar" type="reset">Limpar</button>
+                    <button class="botao_limpar">Cadastrar</button>
+                </div>
+            </form>
+        </section>
+    </main>
+    <script src="/script/register-user.js"></script>
+</body>
+</html>
