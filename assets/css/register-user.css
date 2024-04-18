@@ -18,6 +18,7 @@
     background-color: #f3f3f3;
     padding: 2rem 1rem;
     border-radius: 1rem;
+    box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.25)  ;
 }
 
 .cadastro .cadastro-form label {
@@ -70,18 +71,19 @@
 }
 
 .cadastro .cadastro-form .cadastro-form__opcoes button {
-    color: #f3f3f3;
-    background-color: #333;
+    width: 45%;
+    background-color: #fff;
     border: 2px solid transparent;
     padding: .5rem;
     cursor: pointer;
     transition: 250ms;
+    font-weight: bold;
     border-radius: 1rem;
 }
 
 .cadastro .cadastro-form .cadastro-form__opcoes button:hover {
     border: 2px solid tomato;
-    color: li;
+    color: tomato;
 }
 
 .cadastro .cadastro-form .error-message {
