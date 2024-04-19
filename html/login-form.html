@@ -7,11 +7,25 @@
     <link rel="stylesheet" href="/assets/css/remedy.css">
     <link rel="stylesheet" href="/assets/css/variables.css">
     <link rel="stylesheet" href="/assets/css/login-form.css">
+
+    <link rel="stylesheet" href="/assets/css/header.css">
 </head>
 <body>
+    <header class="header_container">
+        <nav>
+            <div class="header_img">
+                <a href="/html/login-form.html"><img src="/assets/img/logo.jpg" alt="Logo"></a>
+            </div>
+            <ul class="header_items">
+                <li><a href="/html/login-form.html">Login</a></li>
+                <li><a href="/html/register-form.html">Cadastro</a></li>
+            </ul>
+        </nav>
+    </header>
+
     <main>
         <section class="cadastro">
-            <h1>Página de login</h1>
+            <h1>Login</h1>
             <form class="cadastro-form" action="/index.html">
                 <label for="Email">
                     <input type="text" name="Email" required autocomplete="off">
@@ -22,7 +36,6 @@
                     <span>Senha</span>
                 </label>
                 <div class="cadastro-form__opcoes">
-                    <button class="botao_limpar" type="reset">Limpar</button>
                     <button class="botao_limpar">Cadastrar</button>
                 </div>
             </form>
