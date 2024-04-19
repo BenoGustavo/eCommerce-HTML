@@ -1,0 +1,97 @@
+.login {
+    --input-hover-color: tomato;
+
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.login h1 {
+    color: white;
+}
+
+.login .login-form {
+    display: flex;
+    flex-direction: column;
+    width: 50vh;
+    gap: 2rem;
+    background-color: #ebebeb;
+    padding: 3rem 1rem;
+    border-radius: 1rem;
+    box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.25);
+}
+
+.login .login-form label {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.login .login-form label span {
+    position: absolute;
+    bottom: 0;
+    color: #333;
+    transition: 500ms;
+    padding: 1rem .8rem;
+}
+
+.login .login-form label input {
+    min-height: 3.5rem;
+    transition: 500ms;
+    outline: transparent;
+    border: 2px solid transparent;
+    border-radius: 1rem;
+    padding: 0 .5rem;
+}
+
+:is(.login .login-form label:hover input,
+    .login .login-form label input:valid,
+    .login .login-form label input:hover) {
+    background-color: #fefefe;
+    border: 2px solid tomato;
+}
+
+:is(.login .login-form label input:valid + span,
+    .login .login-form label:hover input + span,
+    .login .login-form label input:focus + span) {
+    bottom: 70%;
+    color: tomato;
+    font-weight: bold;
+}
+
+.login .login-form .login-form__opcoes {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.login .login-form .login-form__opcoes button {
+    width: 45%;
+    background-color: #fff;
+    border: 2px solid transparent;
+    padding: .5rem;
+    cursor: pointer;
+    transition: 250ms;
+    font-weight: bold;
+    border-radius: 1rem;
+}
+
+.login .login-form .login-form__opcoes button:hover {
+    border: 2px solid tomato;
+    color: tomato;
+}
+
+.login .login-form .error-message {
+    background-color: rgb(204, 143, 143);
+    color: rgb(179, 34, 34);
+    max-width: 256px;
+    font-weight: bold;
+    text-align: center;
+    border: 1px solid rgb(179, 34, 34);
+    border-radius: .5rem;
+}

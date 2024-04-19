@@ -1,18 +1,19 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Realizar login</title>
+    <link rel="stylesheet" href="/assets/css/login-form.css">
 
     <link rel="stylesheet" href="/assets/css/remedy.css">
     <link rel="stylesheet" href="/assets/css/variables.css">
     <link rel="stylesheet" href="/assets/css/header.css">
-
-    <title>Pagina incial</title>
 </head>
 
 <body>
+
     <header class="header_container">
         <nav>
             <div class="header_img">
@@ -28,6 +29,26 @@
             </ul>
         </nav>
     </header>
+
+    <main>
+        <section class="login">
+            <h1>Entrar no ECM!</h1>
+            <form class="login-form" action="/index.html">
+                <label for="Email">
+                    <input type="text" name="Email" required autocomplete="off">
+                    <span>Email</span>
+                </label>
+                <label for="senha">
+                    <input type="password" name="senha" required>
+                    <span>Senha</span>
+                </label>
+                <div class="login-form__opcoes">
+                    <button class="botao_limpar">Entrar</button>
+                </div>
+            </form>
+        </section>
+    </main>
+    <script src="/script/login-form.js"></script>
 </body>
 
 </html>
