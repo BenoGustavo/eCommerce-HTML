@@ -10,15 +10,20 @@
     gap: 1rem;
 }
 
+.cadastro h1 {
+    /* tava muito branco não aguentei */
+    color: white;
+}
+
 .cadastro .cadastro-form {
     display: flex;
     flex-direction: column;
     width: 50vh;
     gap: 2rem;
-    background-color: #f3f3f3;
+    background-color: #ebebeb;
     padding: 2rem 1rem;
     border-radius: 1rem;
-    box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.25)  ;
+    box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.25);
 }
 
 .cadastro .cadastro-form label {
@@ -44,26 +49,22 @@
     padding: 0 .5rem;
 }
 
-:is(
-    .cadastro .cadastro-form label:hover input,
+:is(.cadastro .cadastro-form label:hover input,
     .cadastro .cadastro-form label input:valid,
-    .cadastro .cadastro-form label input:hover
-) {
+    .cadastro .cadastro-form label input:hover) {
     background-color: #fefefe;
     border: 2px solid tomato;
 }
 
-:is(
-    .cadastro .cadastro-form label input:valid + span,
+:is(.cadastro .cadastro-form label input:valid + span,
     .cadastro .cadastro-form label:hover input + span,
-    .cadastro .cadastro-form label input:focus + span
-) {
+    .cadastro .cadastro-form label input:focus + span) {
     bottom: 70%;
     color: tomato;
     font-weight: bold;
 }
 
-.cadastro .cadastro-form .cadastro-form__opcoes {    
+.cadastro .cadastro-form .cadastro-form__opcoes {
     display: flex;
     gap: 1rem;
     justify-content: center;
