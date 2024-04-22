@@ -1,4 +1,4 @@
-.cadastro {
+.login {
     --input-hover-color: tomato;
 
     width: 100%;
@@ -10,29 +10,28 @@
     gap: 1rem;
 }
 
-.cadastro h1 {
-    /* tava muito branco não aguentei */
+.login h1 {
     color: white;
 }
 
-.cadastro .cadastro-form {
+.login .login-form {
     display: flex;
     flex-direction: column;
     width: 50vh;
     gap: 2rem;
     background-color: #ebebeb;
-    padding: 2rem 1rem;
+    padding: 3rem 1rem;
     border-radius: 1rem;
     box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.25);
 }
 
-.cadastro .cadastro-form label {
+.login .login-form label {
     display: flex;
     flex-direction: column;
     position: relative;
 }
 
-.cadastro .cadastro-form label span {
+.login .login-form label span {
     position: absolute;
     bottom: 0;
     color: #333;
@@ -40,7 +39,7 @@
     padding: 1rem .8rem;
 }
 
-.cadastro .cadastro-form label input {
+.login .login-form label input {
     min-height: 3.5rem;
     transition: 500ms;
     outline: transparent;
@@ -49,29 +48,29 @@
     padding: 0 .5rem;
 }
 
-:is(.cadastro .cadastro-form label:hover input,
-    .cadastro .cadastro-form label input:valid,
-    .cadastro .cadastro-form label input:hover) {
+:is(.login .login-form label:hover input,
+    .login .login-form label input:valid,
+    .login .login-form label input:hover) {
     background-color: #fefefe;
     border: 2px solid tomato;
 }
 
-:is(.cadastro .cadastro-form label input:valid + span,
-    .cadastro .cadastro-form label:hover input + span,
-    .cadastro .cadastro-form label input:focus + span) {
+:is(.login .login-form label input:valid + span,
+    .login .login-form label:hover input + span,
+    .login .login-form label input:focus + span) {
     bottom: 70%;
     color: tomato;
     font-weight: bold;
 }
 
-.cadastro .cadastro-form .cadastro-form__opcoes {
+.login .login-form .login-form__opcoes {
     display: flex;
     gap: 1rem;
     justify-content: center;
     flex-wrap: wrap;
 }
 
-.cadastro .cadastro-form .cadastro-form__opcoes button {
+.login .login-form .login-form__opcoes button {
     width: 45%;
     background-color: #fff;
     border: 2px solid transparent;
@@ -82,18 +81,17 @@
     border-radius: 1rem;
 }
 
-.cadastro .cadastro-form .cadastro-form__opcoes button:hover {
+.login .login-form .login-form__opcoes button:hover {
     border: 2px solid tomato;
     color: tomato;
 }
 
-.cadastro .cadastro-form .error-message {
-    background-color: rgba(204, 143, 143, 0.767);
+.login .login-form .error-message {
+    background-color: rgb(204, 143, 143);
     color: rgb(179, 34, 34);
     max-width: 256px;
     font-weight: bold;
     text-align: center;
     border: 1px solid rgb(179, 34, 34);
     border-radius: .5rem;
-    padding: 1.2rem;
 }
