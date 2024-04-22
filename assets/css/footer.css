@@ -1,0 +1,27 @@
+.footer__container{
+    margin-top: 5rem;
+    padding: 1rem;
+    background-color: tomato;
+    width: 100%;
+}
+
+.footer__items{
+    display: flex;
+}
+
+.footer__items ul{
+    list-style: none;
+}
+
+.footer__items h1,
+.footer__items ul li{
+    color: black;
+    margin: auto;
+    font-size: 1.5rem;
+}
+
+@media screen and (max-width: 600px) {
+    .footer__items{
+        flex-direction: column-reverse;
+    }
+}
