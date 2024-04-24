@@ -14,7 +14,7 @@
 </head>
 
 <body>
-
+    <script type="module" src="/script/modal_two.js"></script>
     <header class="header_container">
         <nav>
             <div class="header_img">
@@ -25,7 +25,7 @@
             </div>
             <ul class="header_items">
                 <li><a href="/index.html">Inicio</a></li>
-                <li><a href="/html/products.html">add produto</a></li>
+                <li><a id="new_product">add produto</a></li>
                 <li><a href="/html/login-form.html">Sair</a></li>
             </ul>
         </nav>
@@ -34,7 +34,8 @@
     <main>
         <section class="container">
             <h1>Produtos disponiveis</h1>
-            <div class="product_container">
+            <div id="product_container" class="product_container">
+                <!-- MODELO UTILIZADO PARA O CARD
                 <div class="product">
                     <h2>Nome do medicamento</h2>
                     <p class="descricao_medicamento">Descrição do medicamento</p>
@@ -80,6 +81,7 @@
                         <button>Comprar</button>
                     </div>
                 </div>
+                -->
             </div>
         </section>
     </main>
@@ -99,7 +101,8 @@
             <h1>E-CM LTDA.</h1>
         </div>
     </footer>
-    <script src=""></script>
+
+    <script type="module" src="/script/products.js"></script>
 </body>
 
 </html>
