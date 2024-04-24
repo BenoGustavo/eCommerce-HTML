@@ -91,6 +91,9 @@ function insertNewProductInPage(newProduct) {
     buttonContainer.className = 'button_container';
     let button = document.createElement('button');
     button.textContent = 'Comprar';
+    button.id = "buy_button";
+    setDecreaseStock(button, newProduct, productStock);
+
     buttonContainer.appendChild(button);
     product.appendChild(productName);
     product.appendChild(productDescription);
@@ -99,6 +102,18 @@ function insertNewProductInPage(newProduct) {
     product.appendChild(buttonContainer);
 
     mainContainer.appendChild(product);
+}
+
+function setDecreaseStock(button, newProduct, productStock) {
+    button.addEventListener('click', function () {
+        let products = JSON.parse(localStorage.getItem('products')) || [];
+        let product = products.find(product => product.name === newProduct.name);
+        if (product) {
+            product.quantity--;
+            localStorage.setItem('products', JSON.stringify(products));
+            productStock.textContent = `Estoque: ${product.quantity}`; // Update the displayed stock
+        }
+    });
 }
 
 loadProducts()
