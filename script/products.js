@@ -110,6 +110,12 @@ function setDecreaseStock(button, newProduct, productStock) {
         let product = products.find(product => product.name === newProduct.name);
         if (product) {
             product.quantity--;
+
+            if (product.quantity == 0) {
+                alert('Produto fora de estoque');
+                products = products.filter(p => p.name !== newProduct.name); // REMOVE DA LISTA (So aparece depois q atualiza a pagina)
+            }
+
             localStorage.setItem('products', JSON.stringify(products));
             productStock.textContent = `Estoque: ${product.quantity}`; // Update the displayed stock
         }
