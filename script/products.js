@@ -58,4 +58,47 @@ function createProduct() {
     localStorage.setItem('products', JSON.stringify(products));
 
     alert(`Produto (${newProduct.name}) cadastrado com sucesso`);
+
+    insertNewProductInPage(newProduct);
 }
+
+function loadProducts() {
+    let products = JSON.parse(localStorage.getItem('products')) || [];
+
+    products.forEach(product => {
+        insertNewProductInPage(product);
+    });
+}
+
+function insertNewProductInPage(newProduct) {
+    let mainContainer = document.getElementById('product_container');
+
+    //CRIANDO A ESTRUTURA DO HTML
+    let product = document.createElement('div');
+    product.className = 'product';
+    let productName = document.createElement('h2');
+    productName.textContent = newProduct.name;
+    let productDescription = document.createElement('p');
+    productDescription.className = 'descricao_medicamento';
+    productDescription.textContent = newProduct.description;
+    let productStock = document.createElement('p');
+    productStock.className = 'descricao_medicamento';
+    productStock.textContent = `Estoque: ${newProduct.quantity}`;
+    let productPrice = document.createElement('p');
+    productPrice.className = 'preco_produto';
+    productPrice.textContent = `R$ ${newProduct.price}`;
+    let buttonContainer = document.createElement('div');
+    buttonContainer.className = 'button_container';
+    let button = document.createElement('button');
+    button.textContent = 'Comprar';
+    buttonContainer.appendChild(button);
+    product.appendChild(productName);
+    product.appendChild(productDescription);
+    product.appendChild(productStock);
+    product.appendChild(productPrice);
+    product.appendChild(buttonContainer);
+
+    mainContainer.appendChild(product);
+}
+
+loadProducts()
