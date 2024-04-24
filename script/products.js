@@ -32,4 +32,30 @@ modalLink.addEventListener('click', function (event) {
             transition: 'all 0.3s ease-in-out',
         }
     );
+
+    //FAZENDO O BUTAO BUTAOZA
+    let addProductButton = document.getElementById('add_product');
+    addProductButton.addEventListener('click', createProduct);
 });
+
+function createProduct() {
+    let newProduct = {
+        name: document.getElementById('product_name_input').value,
+        description: document.getElementById('product_description_input').value,
+        price: document.getElementById('product_price_input').value,
+        quantity: document.getElementById('product_quantity_input').value
+    }
+
+    let products = JSON.parse(localStorage.getItem('products')) || [];
+
+    if (products.find(product => product.name === newProduct.name)) {
+        alert('Produto já cadastrado');
+        return;
+    }
+
+    products.push(newProduct);
+
+    localStorage.setItem('products', JSON.stringify(products));
+
+    alert(`Produto (${newProduct.name}) cadastrado com sucesso`);
+}
