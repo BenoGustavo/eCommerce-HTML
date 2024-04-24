@@ -17,7 +17,7 @@ function loginUser(event) {
 
     if (user) {
         //CARREGA A OUTRA PGINA
-        setAuthUser(user.userName);
+        setAuthUser(user.nome);
         window.location = "/html/products.html"
     } else {
         // NEED TO CREATE A MODAL TO SHOW THE USER NOT FOUND
@@ -28,7 +28,7 @@ function loginUser(event) {
 function setAuthUser(userName) {
     let user = {
         isAutheticated: true,
-        userName: userName
+        nome: userName
     };
 
     console.log(user);
