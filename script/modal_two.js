@@ -58,6 +58,8 @@ export function modalFactory(modalContentHTML, modalStyles) {
         modal.style[property] = modalStyles[property];
     }
 
+    modal.style.cursor = 'default';
+
     // COLOCA O MODAL DENTRO DO OVERLAY
     overlay.appendChild(modal);
 
