@@ -128,7 +128,7 @@ let logoutButton = document.getElementById('logout');
 
 logoutButton.addEventListener('click', function (event) {
     event.preventDefault();
-    localStorage.removeItem('isUserAutheticated');
+    localStorage.removeItem('user');
     window.location = "/index.html";
 })
 
