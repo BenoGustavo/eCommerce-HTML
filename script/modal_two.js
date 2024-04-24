@@ -1,7 +1,26 @@
-function modalFactory(modalContentHTML, modalStyles) {
+export function modalFactory(modalContentHTML, modalStyles) {
+
+    // Se já existe um overlay, mostra ele
+    if (document.getElementById('overlay')) {
+
+        //FAZ APARECER TUDO DENTRO DO OVERLAY
+        document.getElementById('overlay').style.display = 'block';
+
+        //ANIMAÇAO INCIAL
+        document.getElementById('modal').style.transform = 'scale(0)';
+
+        // FAZ O NAVEGADOR RECALCULAR O ESTILO (PARA ANIMAÇÃO FUNCIONAR)
+        void document.getElementById('modal').offsetWidth;
+
+        // ANIMAÇÃO FINAL
+        document.getElementById('modal').style.transform = 'scale(1)';
+        return
+    }
+
+
     // Cria um overlay
     let overlay = document.createElement('div');
-    overlay.style.display = 'none';
+    overlay.style.display = 'block';
     overlay.style.position = 'fixed';
     overlay.style.width = '100%';
     overlay.style.height = '100%';
@@ -12,9 +31,24 @@ function modalFactory(modalContentHTML, modalStyles) {
     overlay.style.backgroundColor = 'rgba(0,0,0,0.6)';
     overlay.style.zIndex = '2';
     overlay.style.cursor = 'pointer';
+    overlay.id = 'overlay';
+
+    let closeButton = document.createElement('button');
+    closeButton.style.position = 'absolute';
+    closeButton.style.top = '20px';
+    closeButton.style.right = '15px';
+    closeButton.innerHTML = 'X';
+    closeButton.style.border = 'none';
+    closeButton.style.fontSize = '1.5rem';
+    closeButton.style.cursor = 'pointer';
+    closeButton.style.padding = '0.5rem';
+    closeButton.style.color = 'red';
+    closeButton.style.backgroundColor = 'transparent';
 
     // Container do modal
     let modal = document.createElement('div');
+
+    modal.id = 'modal';
 
     // Coloca o HTML NO MODAL
     modal.innerHTML = modalContentHTML;
@@ -27,38 +61,25 @@ function modalFactory(modalContentHTML, modalStyles) {
     // COLOCA O MODAL DENTRO DO OVERLAY
     overlay.appendChild(modal);
 
+    // ANIMANDO O MODAL (COMEÇA DO ZERO)
+    modal.style.transform = 'scale(0)';
+
+    // COLOCA O BOTAO DE FECHAR NO MODAL
+    modal.appendChild(closeButton);
+
     // BOTA TUDO NO BODY
     document.body.appendChild(overlay);
 
+    // FAZ O NAVEGADOR RECALCULAR O ESTILO (PARA ANIMAÇÃO FUNCIONAR)
+    void modal.offsetWidth;
+
+    // TERMINANDO ANIMAÇÃO DO MODAL (TERMINA NO TAMANHO ORIGNINAL)
+    modal.style.transform = 'scale(1)';
+
     // FECHA QUANDO CLICA FORA
-    overlay.onclick = function () {
-        overlay.style.display = "none";
+    closeButton.onclick = function () {
+        overlay.style.display = 'none';
     }
 
     return overlay;
 }
-
-let overlay = modalFactory(
-    '<h1>Modal Title</h1><p>Some text in the modal.</p>',
-    {
-        display: 'block',
-        position: 'absolute',
-        zIndex: '3',
-        left: 'calc(50% - 15%)',
-        top: '1rem',
-        width: '30%',
-        height: 'fit-content',
-        overflow: 'auto',
-        borderRadius: "10px",
-        backgroundColor: 'hsl(213 100% 98%)',
-        padding: '0 2rem',
-        textAlign: 'center',
-    }
-);
-
-let button = document.querySelector('#open-modal-button');
-
-// CLICA NO BOTAO MOSTRA O MODAL
-button.addEventListener('click', function () {
-    overlay.style.display = "block";
-});
