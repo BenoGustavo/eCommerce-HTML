@@ -17,9 +17,23 @@ function loginUser(event) {
 
     if (user) {
         //CARREGA A OUTRA PGINA
+        setAuthUser();
         window.location = "/html/products.html"
     } else {
         // NEED TO CREATE A MODAL TO SHOW THE USER NOT FOUND
         alert('User não encontrado');
     }
+}
+
+function setAuthUser() {
+    let isUserAutheticated = true;
+    localStorage.setItem('isUserAutheticated', isUserAutheticated);
+}
+
+function isUserAutheticated() {
+    return localStorage.getItem('isUserAutheticated');
+}
+
+if (isUserAutheticated()) {
+    window.location = "/html/products.html"
 }
