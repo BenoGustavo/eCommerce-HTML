@@ -122,4 +122,14 @@ function setDecreaseStock(button, newProduct, productStock) {
     });
 }
 
+// LOGOUT USER
+
+let logoutButton = document.getElementById('logout');
+
+logoutButton.addEventListener('click', function (event) {
+    event.preventDefault();
+    localStorage.removeItem('isUserAutheticated');
+    window.location = "/index.html";
+})
+
 loadProducts()
