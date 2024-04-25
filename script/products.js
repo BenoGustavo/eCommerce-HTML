@@ -194,3 +194,7 @@ function setBoughtItems(boughtItem){
     // Salva o array de itens comprados no localStorage
     localStorage.setItem('boughtItems', JSON.stringify(boughtItems));
 }
+
+function getBoughtItems(){
+    return JSON.parse(localStorage.getItem('boughtItems')) || [];
+}
