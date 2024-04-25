@@ -154,6 +154,7 @@ kartButton.addEventListener('click', function (event) {
             zIndex: '3',
             top: '1rem',
             right: '3rem',
+            maxHeight: '90vh',
             width: 'fit-content',
             height: 'fit-content',
             overflow: 'auto',
@@ -282,5 +283,25 @@ function loadTotalPrice() {
     totalPriceElement.style.fontSize = '2rem';
     totalPriceElement.style.color = "darkgreen";
 
+    let cleanKartButton = document.createElement('button');
+    cleanKartButton.textContent = 'Limpar';
+    cleanKartButton.style.display = 'block';
+    cleanKartButton.style.margin = '2rem auto';
+    cleanKartButton.style.padding = '0.5rem 1rem';
+    cleanKartButton.style.border = 'solid 1px black';
+    cleanKartButton.style.borderRadius = '5px';
+    cleanKartButton.style.cursor = 'pointer';
+    cleanKartButton.style.backgroundColor = 'red';
+    cleanKartButton.style.color = 'white';
+
+    cleanKartButton.addEventListener('click', cleanKart);
+
     totalKart.appendChild(totalPriceElement);
+    totalKart.appendChild(cleanKartButton);
+}
+
+function cleanKart() {
+    localStorage.removeItem('boughtItems');
+    loadBoughtItems();
+    loadTotalPrice();
 }
