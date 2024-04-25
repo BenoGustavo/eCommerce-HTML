@@ -146,33 +146,41 @@ kartButton.addEventListener('click', function (event) {
     let user = JSON.parse(localStorage.getItem('user'));
 
     modalFactory(
-        `<h1 style="text-align: center;">CARRINHO DE ${user.nome.toUpperCase()}</h1><div id="carrinho_content" style="display: flex; flex-direction: column; align-items: center; justify-content: center;"></div>`,
+        `<h1 style="text-align: center;">CARRINHO DE ${user.nome.toUpperCase()}</h1><hr><div id="carrinho_content" style="display: flex; flex-direction: column; align-items: center; justify-content: center;"></div><hr><div id="total_kart"></div>`,
         {
             display: 'block',
             position: 'absolute',
             zIndex: '3',
-            left: '1rem',
             top: '1rem',
-            right: '1rem',
-            width: '97%',
+            right: '3rem',
+            width: 'fit-content',
             height: 'fit-content',
             overflow: 'auto',
             borderRadius: "10px",
             backgroundColor: 'hsl(213 100% 98%)',
-            padding: '0 2rem',
+            padding: '0rem 4rem',
             textAlign: 'left',
             boxShadow: '0 0 10px 0 hsl(213 100% 80%)',
             transition: 'all 0.3s ease-in-out',
         }
     );
+
+    loadBoughtItems()
+    loadTotalPrice()
 });
 
-function setBoughtItems(boughtItem){
+function setBoughtItems(boughtItem) {
     // Recupera os itens comprados do localStorage. Se não existir, inicializa com um array vazio
     let boughtItems = JSON.parse(localStorage.getItem('boughtItems')) || [];
-    
+
+    //PENGANOD AS INFO DO USER LOGADO
+    let user = JSON.parse(localStorage.getItem('user'));
+
     // Faz uma cópia profunda do item comprado para evitar problemas com referências
     let boughtItemDeepCopy = JSON.parse(JSON.stringify(boughtItem));
+
+    //ADICONADNO DONO DA COMPRA
+    boughtItemDeepCopy.owner = user.nome;
 
     // Verifica se boughtItems é um array. Se não for, exibe um erro e inicializa boughtItems como um array vazio
     if (!Array.isArray(boughtItems)) {
@@ -195,6 +203,82 @@ function setBoughtItems(boughtItem){
     localStorage.setItem('boughtItems', JSON.stringify(boughtItems));
 }
 
-function getBoughtItems(){
-    return JSON.parse(localStorage.getItem('boughtItems')) || [];
+function getBoughtItems() {
+    //PEGANDO OS ITENS COMPRADOS
+    let boughtItems = JSON.parse(localStorage.getItem('boughtItems')) || [];
+    //PEGANDO AS INFO DO USER LOGADO
+    let user = JSON.parse(localStorage.getItem('user'));
+
+    //PEGANDO OS ITENS COMPRADOS PELO USUARIO
+    return boughtItems.filter(item => item.owner === user.nome);
+}
+
+function loadBoughtItems() {
+
+    let boughtItems = getBoughtItems();
+
+    let carrinhoContent = document.getElementById('carrinho_content');
+
+    //ZEREI O CARRINHO PRA CARREGA DNV
+    carrinhoContent.innerHTML = '';
+
+    boughtItems.forEach(boughtItem => {
+        let itemContainer = document.createElement('div');
+        itemContainer.style.display = 'flex';
+        itemContainer.style.width = '100%';
+        itemContainer.style.alignItems = 'center';
+        itemContainer.style.justifyContent = "space-between";
+
+        let itemName = document.createElement('h2');
+        itemName.textContent = `${boughtItem.name} `;
+        itemName.style.textTransform = 'uppercase';
+        itemName.style.fontSize = '2rem';
+        itemName.style.marginTop = '0.5rem';
+
+        let itemQuantity = document.createElement('p');
+        itemQuantity.textContent = `${boughtItem.quantity}X`;
+        itemQuantity.style.alignSelf = 'right';
+        itemQuantity.style.marginTop = '0.5rem';
+
+        let itemPrice = document.createElement('p');
+        itemPrice.textContent = `R$${boughtItem.price}`;
+        itemPrice.style.alignSelf = 'right';
+        itemPrice.style.marginTop = '0.5rem';
+        itemPrice.style.color = 'darkgreen';
+        itemPrice.style.alignSelf = 'right';
+
+        itemContainer.appendChild(itemName);
+        itemContainer.appendChild(itemQuantity);
+
+        itemContainer.appendChild(itemPrice);
+
+        carrinhoContent.appendChild(itemContainer);
+    });
+}
+
+function getBoughtItemsTotalPrice() {
+    let boughtItems = getBoughtItems();
+
+    let totalPrice = boughtItems.reduce((total, item) => {
+        let product = JSON.parse(localStorage.getItem('products')).find(product => product.name === item.name);
+        return total + (product.price * item.quantity);
+    }, 0);
+
+    return totalPrice;
+}
+
+function loadTotalPrice() {
+    let totalPrice = getBoughtItemsTotalPrice();
+
+    let totalKart = document.getElementById('total_kart');
+    totalKart.style.textAlign = "center";
+
+    totalKart.innerHTML = '';
+
+    let totalPriceElement = document.createElement('h2');
+    totalPriceElement.textContent = `Total: R$ ${totalPrice}`;
+    totalPriceElement.style.fontSize = '2rem';
+    totalPriceElement.style.color = "darkgreen";
+
+    totalKart.appendChild(totalPriceElement);
 }
