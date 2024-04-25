@@ -111,6 +111,8 @@ function setDecreaseStock(button, newProduct, productStock) {
         if (product) {
             product.quantity--;
 
+            setBoughtItems(product);
+
             if (product.quantity == 0) {
                 alert('Produto fora de estoque');
                 products = products.filter(p => p.name !== newProduct.name); // REMOVE DA LISTA (So aparece depois q atualiza a pagina)
@@ -133,3 +135,62 @@ logoutButton.addEventListener('click', function (event) {
 })
 
 loadProducts()
+
+//CARRINHO DE COMPRAS
+
+let kartButton = document.getElementById("carrinho")
+
+kartButton.addEventListener('click', function (event) {
+    event.preventDefault();
+
+    let user = JSON.parse(localStorage.getItem('user'));
+
+    modalFactory(
+        `<h1 style="text-align: center;">CARRINHO DE ${user.nome.toUpperCase()}</h1><div id="carrinho_content" style="display: flex; flex-direction: column; align-items: center; justify-content: center;"></div>`,
+        {
+            display: 'block',
+            position: 'absolute',
+            zIndex: '3',
+            left: '1rem',
+            top: '1rem',
+            right: '1rem',
+            width: '97%',
+            height: 'fit-content',
+            overflow: 'auto',
+            borderRadius: "10px",
+            backgroundColor: 'hsl(213 100% 98%)',
+            padding: '0 2rem',
+            textAlign: 'left',
+            boxShadow: '0 0 10px 0 hsl(213 100% 80%)',
+            transition: 'all 0.3s ease-in-out',
+        }
+    );
+});
+
+function setBoughtItems(boughtItem){
+    // Recupera os itens comprados do localStorage. Se não existir, inicializa com um array vazio
+    let boughtItems = JSON.parse(localStorage.getItem('boughtItems')) || [];
+    
+    // Faz uma cópia profunda do item comprado para evitar problemas com referências
+    let boughtItemDeepCopy = JSON.parse(JSON.stringify(boughtItem));
+
+    // Verifica se boughtItems é um array. Se não for, exibe um erro e inicializa boughtItems como um array vazio
+    if (!Array.isArray(boughtItems)) {
+        console.error('boughtItems não é um array:', boughtItems);
+        boughtItems = [];
+    }
+
+    // Procura o item no array de itens comprados
+    let existingItem = boughtItems.find(item => item.name === boughtItem.name);
+    // Se o item já existir, incrementa a quantidade
+    if (existingItem) {
+        existingItem.quantity++;
+    } else {
+        // Se o item não existir, define a quantidade como 1 e adiciona o item ao array
+        boughtItemDeepCopy.quantity = 1;
+        boughtItems.push(boughtItemDeepCopy);
+    }
+
+    // Salva o array de itens comprados no localStorage
+    localStorage.setItem('boughtItems', JSON.stringify(boughtItems));
+}
