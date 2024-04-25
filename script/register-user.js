@@ -1,4 +1,4 @@
-    const form = document.querySelector('.cadastro-form');
+const form = document.querySelector('.cadastro-form');
 
 function get_form_data() {
     const inputs = document.querySelectorAll('input');
@@ -47,7 +47,7 @@ function add_local_data(data) {
         return display_error(error.message);
     }
 
-    window.location = "/html/products.html"
+    window.location = "/html/login.html"
 }
 
 function display_error(error) {
