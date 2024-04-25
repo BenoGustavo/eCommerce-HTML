@@ -47,7 +47,7 @@ function add_local_data(data) {
         return display_error(error.message);
     }
 
-    window.location = "/html/login.html"
+    window.location = "/html/login-form.html"
 }
 
 function display_error(error) {
