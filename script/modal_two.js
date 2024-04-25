@@ -1,10 +1,10 @@
-export function modalFactory(modalContentHTML, modalStyles) {
+export function modalFactory(modalContentHTML, modalStyles, overlayName) {
 
     // Se já existe um overlay, mostra ele
-    if (document.getElementById('overlay')) {
+    if (document.getElementById(overlayName)) {
 
         //FAZ APARECER TUDO DENTRO DO OVERLAY
-        document.getElementById('overlay').style.display = 'block';
+        document.getElementById(overlayName).style.display = 'block';
 
         //ANIMAÇAO INCIAL
         document.getElementById('modal').style.transform = 'scale(0)';
@@ -31,7 +31,7 @@ export function modalFactory(modalContentHTML, modalStyles) {
     overlay.style.backgroundColor = 'rgba(0,0,0,0.6)';
     overlay.style.zIndex = '2';
     overlay.style.cursor = 'pointer';
-    overlay.id = 'overlay';
+    overlay.id = overlayName;
 
     let closeButton = document.createElement('button');
     closeButton.style.position = 'absolute';
@@ -80,7 +80,14 @@ export function modalFactory(modalContentHTML, modalStyles) {
 
     // FECHA QUANDO CLICA FORA
     closeButton.onclick = function () {
-        overlay.style.display = 'none';
+
+        //ANIMAÇÃO DE FECHAMENTO
+        modal.style.transform = 'scale(0)';
+
+        // Wait for the transition to finish before hiding the overlay
+        modal.addEventListener('transitionend', function () {
+            overlay.style.display = 'none';
+        }, { once: true });
     }
 
     return overlay;

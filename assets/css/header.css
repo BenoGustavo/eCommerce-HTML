@@ -72,6 +72,16 @@
     cursor: pointer;
 }
 
+.carrinho img{
+    display: block;
+    max-width: 4rem;
+    max-height: 6rem;
+    height: auto;
+    width: auto;
+
+    margin: 1.6rem 5rem;
+}
+
 /* underline animation */
 
 .header_items li a {
