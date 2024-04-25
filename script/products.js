@@ -31,6 +31,7 @@ modalLink.addEventListener('click', function (event) {
             boxShadow: '0 0 10px 0 hsl(213 100% 80%)',
             transition: 'all 0.3s ease-in-out',
         }
+        , 'overlay_new_product'
     );
 
     //FAZENDO O BUTAO BUTAOZA
@@ -163,6 +164,7 @@ kartButton.addEventListener('click', function (event) {
             boxShadow: '0 0 10px 0 hsl(213 100% 80%)',
             transition: 'all 0.3s ease-in-out',
         }
+        , 'overlay_kart'
     );
 
     loadBoughtItems()
